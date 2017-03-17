@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AlertModule} from "ng2-bootstrap";
+import {SocialApiService} from "./social.api.service";
+import {RouterModule, Router} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import {AlertModule} from "ng2-bootstrap";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AlertModule.forRoot(),
+    RouterModule,
+    AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [SocialApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

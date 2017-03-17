@@ -87,11 +87,15 @@
         </div>
         <div class="panel-footer">
           <div class="input-group">
-            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-            <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
-                                Send</button>
-                        </span>
+            <form #formForm="ngForm">
+              <input id="btn-input"
+                     name="author" #inputWord="ngModel" ngModel  (keypress)="changeWord()" [(ngModel)]="someWord" required
+                     type="text"  class="form-control input-sm" placeholder="Type your message here..." />
+              <span class="input-group-btn">
+              <button  class="btn btn-warning btn-sm" type="submit" id="btn-chat">
+                Send</button>
+              </span>
+            </form>
           </div>
         </div>
       </div>
