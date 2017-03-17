@@ -28,19 +28,20 @@ app.use(session({
 
   // APIs
   // select all
-  app.get('/isgoodword', function(req, res) {
+  app.post('/isgoodword', function(req, res) {
     apiheaders = {
       'Authorization': '2524a832-c1c6-4894-9125-41a9ea84e013',
         'Content-Type': 'application/json'
     }
-    text = '&text='+req.body['text']
+    text = 'text='+req.body['text']
     request({
       headers: apiheaders,
-      uri: 'http://api1.webpurify.com/services/rest/' +
-      '?method=webpurify.live.replace&api_key=c2d6e0ef41c94572f0c6e39a272a899f&format=json'+text,
+      url: 'http://api1.webpurify.com/services/rest/' +
+      '?method=webpurify.live.replace&api_key=c2d6e0ef41c94572f0c6e39a272a899f&format=json&'+text,
       method: 'POST'
-    }, function (err, res, body) {
-      res.json(body);
+    }, function (err, response, body) {
+      res.setHeader('Content-Type', 'application/json');
+      res.json(JSON.parse(body));
     });
   });
 
