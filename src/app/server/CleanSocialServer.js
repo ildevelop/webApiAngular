@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var crypto = require('crypto');
 var fs = require('fs');
-
+var request = require('request');
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
@@ -29,11 +29,21 @@ app.use(session({
   // APIs
   // select all
   app.get('/isgoodword', function(req, res) {
-    User.find({}, function(err, docs) {
-      if(err) console.error(err);
-      res.json(docs);
+    apiheaders = {
+      'Authorization': '2524a832-c1c6-4894-9125-41a9ea84e013',
+        'Content-Type': 'application/json'
+    }
+    text = '&text='+req.body['text']
+    request({
+      headers: apiheaders,
+      uri: 'http://api1.webpurify.com/services/rest/' +
+      '?method=webpurify.live.replace&api_key=c2d6e0ef41c94572f0c6e39a272a899f&format=json'+text,
+      method: 'POST'
+    }, function (err, res, body) {
+      res.json(body);
     });
   });
+
   // all other routes are handled by Angular
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname,'./../../../dist/index.html'));
