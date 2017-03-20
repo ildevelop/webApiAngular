@@ -1,6 +1,7 @@
-# WebNew
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2.
+# Web application connect to Purify API 
+##fully independent parental controls app that provides you with the protection of real-time catching and filtering of web and app content, without restrictions on which apps you use to browse the Web and stream content.
+## censoring offensive and inappropriate text massage
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2.
 
 ## Development server
 
